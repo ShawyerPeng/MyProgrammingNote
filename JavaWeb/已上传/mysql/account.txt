@@ -1,0 +1,54 @@
+mysql -u root -p
+
+create database myproject;
+
+show databases;
+
+use account;
+
+create table account(
+username varchar(20) unique not null,
+password varchar(20) not null
+);
+
+insert into account values (user1,psw1);
+update account set username=xxx,password=xxx where username=user1;
+delete from account where username=user1;
+
+select * from account;
+
+
+
+
+
+
+
+
+
+
+
+
+    alter table 表名 add 字段 类型(长度) 约束;	 				-- 添加字段add
+    alter table 表名 drop 字段;									 -- 删除字段drop
+    alter table 表名 modify 字段 类型(长度) 约束;				    -- 修改类型或者约束modify
+    alter table 表名 change 旧字段 新字段 类型(长度) 约束		     -- 修改字段的名称change
+    rename table 表名 to 新表名;								    -- 修改表名to
+    alter table 表名 character set utf8;						   -- 修改字符集character
+
+
+
+
+
+drop database myproject;
+drop table account;
+
+
+
+
+
+
+
+导入.sql文件数据：
+source C:\Users\PatrickYates\Desktop\sql_table.sql
+source C:\Users\PatrickYates\Desktop\sql_data.sql
+

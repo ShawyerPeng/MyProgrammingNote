@@ -1,0 +1,14 @@
+C:\ProgramData\MySQL\MySQL Server 5.7
+
+
+
+
+
+
+
+service mysql start
+mysqld start
+mysqld stop
+mysqld restart
+
+services.msc
