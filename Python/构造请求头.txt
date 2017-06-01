@@ -1,0 +1,51 @@
+import urllib.request
+import urllib.parse
+import http.cookiejar
+
+user_agent = ''                     #构造headers
+cookie = ''
+referer = ''
+host = ''
+content_type = ''
+
+url = 'http://www.baidu.com'        #构造Request对象
+values = {'name' : 'Michael Foord',
+          'location' :'Northampton',
+          'language' :'Python' }
+headers={'User-Agent':user_agent,'Cookie':cookie,'Referer':referer,'Host':host,'Content-Type':content_type}
+
+data = urllib.parse.urlencode(values)
+req = urllib.request.Request(url,data,headers)		#或request.add_header("Referer", "http://www.baidu.com")
+response = urllib.request.urlopen(req,timeout=10)
+the_page = response.read().decode('UTF-8')
+
+----------------使用代理
+proxy_handler = urllib.request.ProxyHandler({'http': 'http://www.example.com:3128/'})
+opener = urllib.request.build_opener(proxy_handler)
+urllib.request.install_opener(opener)                   # 1.安装全局opener，然后利用urlopen打开url   或# 2.直接利用opener实例打开url:	response = opener.open(url)
+response = urllib.request.urlopen(url)			# 1.安装全局opener，然后利用urlopen打开url
+
+		同时使用CookieJar
+cookie_jar = http.cookiejar.CookieJar()
+cookie_jar_handler = urllib.request.HTTPCookieProcessor(cookiejar=cookie_jar)
+
+opener.add_handler(cookie_jar_handler)
+
+----------------最简单的urlopen
+url = "http://www.baidu.com"                        #1.最简单的urlopen()
+response = urllib.request.urlopen(url)
+print(response.read())
+
+
+----------------data构造
+data = urllib.parse.urlencode({"act": "login", "email": "xianhu@qq.com", "password": "123456"})
+
+request1 = urllib.request.Request(url, data=data)           # POST方法
+
+request2 = urllib.request.Request(url+"?%s" % data)         # GET方法
+
+
+----------------header构造
+req.add_header('Origin', 'https://passport.weibo.cn')
+req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F')
