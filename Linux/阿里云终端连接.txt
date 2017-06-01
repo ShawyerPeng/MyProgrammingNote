@@ -1,0 +1,4 @@
+管理终端连接密码： 708126
+
+cat ~/.ssh/id_rsa.pub | ssh root@120.24.213.130 'cat >> ~/.ssh/authorized_keys';
+cat C:/Users/PatrickYates/.ssh/id_rsa.pub | ssh root@120.24.213.130 'cat >> ~/.ssh/authorized_keys';
