@@ -1,0 +1,29 @@
+//void mystrcpy(char *str1, char *str2) {
+//	while (*str2 != '\0') {
+//		*str1 = *str2;
+//		str1++;
+//		str2++;
+//	}
+//}
+//
+//void mystrcat(char *str1, char *str2) {
+//	while (*str1) {	/*½«Ö¸Õëstr1²¦µ½×Ö·û´®Ä©Î²*/
+//		str1++;
+//	}
+//	//while (*str2 != 0) {
+//	//	*str1++ = *str2++;
+//	//}
+//	while (*str1++ = *str2++);
+//}
+//
+//
+//
+//
+//int main()
+//{
+//	char str1[] = "hello,";
+//	char str2[] = "world!";
+//	mystrcat(str1, str2);
+//	cout << str1 << endl;
+//	return 0;
+//}

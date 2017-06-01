@@ -1,0 +1,43 @@
+/**
+ * Definition of TreeNode:
+ * class TreeNode {
+ * public:
+ *     int val;
+ *     TreeNode *left, *right;
+ *     TreeNode(int val) {
+ *         this->val = val;
+ *         this->left = this->right = NULL;
+ *     }
+ * }
+ */
+class Solution {
+    /**
+     * @param root: The root of binary tree.
+     * @return: Postorder in vector which contains node values.
+     */
+public:
+    vector<int> postorderTraversal(TreeNode *root) {
+        vector<int> result;
+        stack<TreeNode *> stack;
+        
+        TreeNode *current = root, *lastVisited = NULL;
+        while (current != NULL || !stack.empty()) {
+            // 只要访问的结点不为空，则：将该
+            while (current != NULL) {
+                stack.push(current);
+                current = current->left;
+            }
+            current = stack.top(); 
+            // 右孩子为空或者右孩子已被访问过，则：直接访问当前结点current，并且把lastVisited修改成current
+            if (current->right == NULL || current->right == lastVisited) {
+                stack.pop();
+                result.push_back(current->val);
+                lastVisited = current;
+                current = NULL;
+            } else { // 否则
+                current = current->right;
+            }
+        }
+        return result;
+    }
+};

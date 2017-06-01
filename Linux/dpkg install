@@ -1,0 +1,51 @@
+sudo dpkg -i .deb
+sudo apt-get -f install       (apt-get update)
+
+
+
+
+tar -zxvf **.tar.gz
+cd **
+make defconfig
+make
+make install
+
+
+
+添加PPA：sudo add-apt-repository ppa:xxx
+
+
+
+
+
+
+
+
+JetBrains：
+http://idea.iteblog.com/key.php
+
+
+
+
+
+CodeBlocks：
+1. 安装PPA源：sudo add-apt-repository ppa:damien-moore/codeblocks-stable
+2. 对源进行更新：sudo apt-get update
+3. 安装：sudo apt-get install codeblocks
+
+
+
+
+
+
+
+npm淘宝镜像：
+npm config set registry https://registry.npm.taobao.org
+// 配置后可通过下面方式来验证是否成功 npm config get registry
+
+
+npm config set proxy=http://代理服务器ip:代理服务器端口
+
+清理代理：    npm config delete http-proxy
+    npm config delete https-proxy
+
